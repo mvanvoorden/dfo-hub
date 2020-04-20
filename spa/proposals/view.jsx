@@ -30,6 +30,10 @@ var Proposals = React.createClass({
         var _this = this;
         return (
             <section className="ProposalsIndex">
+                <ul className="DFONavigator DFONavigatorAfter">
+                    <li><WalletEnablerButton onClick={this.newProposal}>New Proposal</WalletEnablerButton></li>
+                    <li><WalletEnablerButton onClick={this.newProposal}>One Time Proposal</WalletEnablerButton></li>
+                </ul>
                 <section className="ProposalsActiveIndex">
                     <h2>Active Proposals</h2>
                     {_this.state && _this.state.surveys && Object.keys(_this.state.surveys).length === 0 && <span>No active proposals right now</span>}
