@@ -1,4 +1,4 @@
-var DFOElement = React.createClass({
+var swapElement = React.createClass({
     requiredModules: [
         'spa/overview'
     ],
@@ -37,7 +37,6 @@ var DFOElement = React.createClass({
                 <ul className="DFONavigator DFONavigatorAfter">
                     <li><a href="javascript:;" onClick={this.onClick} className="selected">Overview</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>Functions</a></li>
-                    <li><a href="javascript:;" onClick={this.onClick}>State</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>Proposals</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>New Proposal</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>Swap</a></li>
