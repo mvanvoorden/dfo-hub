@@ -24,7 +24,7 @@ var Index = React.createClass({
     },
     onDFO(dFO) {
         var _this = this;
-        _this.setState({ dFO, deploy: null }, function () {
+        _this.setState({ dFO, deploy: null, swap: null }, function () {
             _this.address && (_this.address.value = dFO.options.address) && this.load({ target: { dataset: { timeout: "0" } } });
             window.history.pushState({}, "", window.location.protocol + "//" + window.location.hostname + (window.location.port && window.location.port !== "443" && window.location.port !== "80" ? (":" + window.location.port) : "") + "/?addr=" + dFO.options.address);
         });
@@ -36,7 +36,7 @@ var Index = React.createClass({
         this.loadTimeout && window.clearTimeout(this.loadTimeout);
         var _this = this;
         _this.loadTimeout = setTimeout(function () {
-            _this.setState({ dFO: null, deploy: null }, () => {
+            _this.setState({ dFO: null, deploy: null, swap: null }, () => {
                 _this.onFullscreen();
                 _this.emit('search', _this.address.value)
             });
@@ -45,7 +45,12 @@ var Index = React.createClass({
     deploy(e) {
         e && e.preventDefault(true) && e.stopPropagation(true);
         var _this = this;
-        _this.setState({ dFO: null, deploy: (_this.state && _this.state.deploy) ? false : true }, () => _this.onFullscreen(true));
+        _this.setState({ dFO: null, swap: null, deploy: (_this.state && _this.state.deploy) ? false : true }, () => _this.onFullscreen(true));
+    },
+    swap(e) {
+        e && e.preventDefault(true) && e.stopPropagation(true);
+        var _this = this;
+        _this.setState({ dFO: null, deploy: null, swap: (_this.state && _this.state.swap) ? false : true }, () => _this.onFullscreen(true));
     },
     componentDidMount() {
         var address = '';
@@ -79,7 +84,7 @@ var Index = React.createClass({
                                 </a>
                             </li>
                             <li className="DeployLi">
-                                <a className="LinkVisualButton LinkVisualButtonR">&#129412;Swap</a>
+                                <a href="javascript:;" className={"LinkVisualButton LinkVisualButtonR" + (this.state && this.state.swap ? " Editing" : "")} onClick={this.swap}>&#129412;Swap</a>
                                 <WalletEnablerButton className={"LinkVisualButton LinkVisualButtonB" + (this.state && this.state.deploy ? " Editing" : "")} onClick={this.deploy}>{this.state && this.state.deploy ? 'Back' : 'New'}</WalletEnablerButton>
                                 <a className="ChangeViewDtoW" href="javascript:;" onClick={this.toggleDarkMode} ref={ref => ref && (ref.innerHTML = ("&#" + (window.localStorage.darkMode === 'true' ? "128161" : "127769") + ";"))}>&#127769;</a>
                             </li>
@@ -99,6 +104,7 @@ var Index = React.createClass({
                     </div>
                     {this.state && this.state.deploy && <Deploy/>}
                     {(!this.state || !this.state.deploy) && <DFOList/>}
+                    
                 </section>
                 <Messages/>
                 <Loader/>
