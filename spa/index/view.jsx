@@ -103,7 +103,8 @@ var Index = React.createClass({
                         </section>
                     </div>
                     {this.state && this.state.deploy && <Deploy/>}
-                    {(!this.state || !this.state.deploy) && <DFOList/>}
+                    {this.state && this.state.swap && <Swap/>}
+                    {!this.state || !(this.state.deploy && this.state.swap) && <DFOList/>}
                     
                 </section>
                 <Messages/>
