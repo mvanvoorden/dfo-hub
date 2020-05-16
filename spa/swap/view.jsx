@@ -39,7 +39,6 @@ var swapElement = React.createClass({
                     <li><a href="javascript:;" onClick={this.onClick}>Functions</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>Proposals</a></li>
                     <li><a href="javascript:;" onClick={this.onClick}>New Proposal</a></li>
-                    <li><a href="javascript:;" onClick={this.onClick}>Swap</a></li>
                 </ul>
                 {React.createElement(window[this.state.element], props)}
             </section>
