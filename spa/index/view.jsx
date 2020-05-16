@@ -1,6 +1,7 @@
 var Index = React.createClass({
     requiredModules: [
         'spa/deploy',
+        'spa/swap',
         'spa/dFOList'
     ],
     requiredScripts: [
