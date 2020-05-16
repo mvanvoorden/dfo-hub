@@ -78,6 +78,7 @@ var Index = React.createClass({
                                 </a>
                             </li>
                             <li className="DeployLi">
+                                <a className="LinkVisualButton LinkVisualButtonB">Swap</a>
                                 <WalletEnablerButton className={"LinkVisualButton LinkVisualButtonB" + (this.state && this.state.deploy ? " Editing" : "")} onClick={this.deploy}>{this.state && this.state.deploy ? 'Back' : 'New'}</WalletEnablerButton>
                                 <a className="ChangeViewDtoW" href="javascript:;" onClick={this.toggleDarkMode} ref={ref => ref && (ref.innerHTML = ("&#" + (window.localStorage.darkMode === 'true' ? "128161" : "127769") + ";"))}>&#127769;</a>
                             </li>
